@@ -11,10 +11,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
  mydata = read.csv("oral health1.csv")
+my_data2=read.csv("oral health2.csv")
 ```
 
 ```{r}
 Death=mydata$Data_Value
+Death2=sort(Death)
+View(Death2)
 ```
 
 
