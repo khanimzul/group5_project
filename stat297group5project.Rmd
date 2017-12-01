@@ -20,5 +20,73 @@ Death2=sort(Death)
 View(Death2)
 ```
 
+#Oral Health Service
+
+```{r}
+OralServe12Data = read.csv("oral health service (2012).csv")
+View(OralServe12Data)
+```
+
+```{r}
+OralServe12a = OralServe12Data$Data_Value
+OralServe12b = sort(OralServe12a)
+View(OralServe12b)
+```
+
+```{r}
+OralServe13Data = read.csv("oral health service (2013).csv")
+View(OralServe13Data)
+```
+```{r}
+OralServe13a = OralServe13Data$Data_Value
+OralServe13b = sort(OralServe13a)
+View(OralServe13b)
+```
+```{r}
+OralServe14Data = read.csv("oral health service (2014).csv")
+View(OralServe14Data)
+```
+```{r}
+OralServe14a = OralServe14Data$Data_Value
+OralServe14b = sort(OralServe14a)
+View(OralServe14b)
+```
+```{r}
+OralServe15Data = read.csv("oral health service (2015).csv")
+View(OralServe15Data)
+```
+```{r}
+OralServe15a = OralServe15Data$Data_Value
+OralServe15b = sort(OralServe15a)
+View(OralServe15b)
+```
+```{r}
+ToothLostMalePrev14Data = read.csv("toothlostmore6MalePrev14.csv")
+View(ToothLostMalePrev14Data)
+```
+```{r}
+ToothLostMalePrev14a = ToothLostMalePrev14Data$Data_Value
+ToothLostMalePrev14b = sort(ToothLostMalePrev14a)
+View(ToothLostMalePrev14b)
+```
+```{r}
+ToothLostMalePrev12Data = read.csv("toothlostmore6MalePrev12.csv")
+```
+```{r}
+ToothLostMalePrev12a = ToothLostMalePrev12Data$Data_Value
+ToothLostMalePrev12b = sort(ToothLostMalePrev12a)
+View(ToothLostMalePrev12b)
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
