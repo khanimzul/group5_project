@@ -77,6 +77,9 @@ ToothLostMalePrev12a = ToothLostMalePrev12Data$Data_Value
 ToothLostMalePrev12b = sort(ToothLostMalePrev12a)
 View(ToothLostMalePrev12b)
 ```
+```{r}
+
+```
 
 
 
