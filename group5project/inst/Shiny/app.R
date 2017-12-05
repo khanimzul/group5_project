@@ -1,4 +1,4 @@
-library(stat297datasets)
+
 
 ui=fluidPage(
   titlePanel("Basic DataTable"),
@@ -54,8 +54,7 @@ server=function(input, output) {
   # Filter data based on selections
   output$table <- DT::renderDataTable(DT::datatable({
 
-    library(stat297datasets)
-     if (input$topic != "All") {
+    if (input$topic != "All") {
       data <- data[data$Topic == input$topic,]
     }
     if (input$locat != "All") {
