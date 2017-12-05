@@ -1,4 +1,4 @@
-ID,Year,LocationDesc,Question,Data Type,Data Value,category
+ID,Year,Location,Topic,Data Type,Data Value,Category
 265461,2014,United States,Six or more teeth lost among adults aged >= 65 years,Crude Prevalence,37.3,Male
 265110,2014,Alabama,Six or more teeth lost among adults aged >= 65 years,Crude Prevalence,48.7,Male
 265103,2014,Alaska,Six or more teeth lost among adults aged >= 65 years,Crude Prevalence,27.9,Male

@@ -1,20 +1,23 @@
 library(stat297datasets)
-data1=oral_health_service_2012_
-data2=oral_health_service_2013_
-data3=oral_health_service_2014_
-data4=teeth_loss_6_crude_female_12_
-data5=teeth_loss_6_crude_male_12_
 
 ui=fluidPage(
   titlePanel("Basic DataTable"),
 
   # Create a new Row in the UI for selectInputs
   fluidRow(
+
+    column(4,
+           selectInput("topic",
+                       "Topic:",
+                       c("All",
+                         unique(as.character(data$Topic))))
+    ),
+
     column(4,
            selectInput("locat",
                        "Location:",
                        c("All",
-                         unique(as.character(data()$Location))))
+                         unique(as.character(data$Location))))
     )
   ),
 
@@ -22,7 +25,7 @@ ui=fluidPage(
          selectInput("year",
                      "Year:",
                      c("All",
-                       unique(as.character(data()$Year))))
+                       unique(as.character(data$Year))))
   ),
 
   column(4,
@@ -37,6 +40,8 @@ ui=fluidPage(
                      c("All", "Male", "Female"))
   ),
 
+
+
   # Create a new row for the table.
   fluidRow(
     DT::dataTableOutput("table")
@@ -49,8 +54,10 @@ server=function(input, output) {
   # Filter data based on selections
   output$table <- DT::renderDataTable(DT::datatable({
 
-    data=rbind(data1,data2,data3,data4,data5)
-
+    library(stat297datasets)
+     if (input$topic != "All") {
+      data <- data[data$Topic == input$topic,]
+    }
     if (input$locat != "All") {
       data <- data[data$Location == input$locat,]
     }
