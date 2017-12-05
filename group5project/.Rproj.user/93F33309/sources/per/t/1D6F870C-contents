@@ -1,0 +1,17 @@
+Package: group5project
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Authors@R: c(
+    person("Shafiqah", "Azman", email = "sza5348@psu.edu", role = c("aut","cre")),
+    person("Iffah", "Saufi", role = "aut"),
+    person("Lisa", "Fadli", role = "aut"),
+    person("Hanim", "Zulhaimi", role = "aut")
+    )
+Maintainer: Shafiqah Azman <sza5348@psu.edu>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1

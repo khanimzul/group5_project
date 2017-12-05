@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1512497326643.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "436030638",
+    "id" : "37FD0AF9",
+    "lastKnownWriteTime" : 1512499549,
+    "last_content_update" : 1512499549218,
+    "path" : "F:/[STAT297]/group5_project/group5project/test2.R",
+    "project_path" : "test2.R",
+    "properties" : {
+        "cursorPosition" : "16,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

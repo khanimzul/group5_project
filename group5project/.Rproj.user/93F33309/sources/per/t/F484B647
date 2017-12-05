@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1512497359848.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F484B647",
+    "lastKnownWriteTime" : 7308604914264011873,
+    "last_content_update" : 1512497359848,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "B067DCE8",
+        "caption" : "oral_health_service_2012_",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=oral_health_service_2012_&cache_key=B067DCE8",
+        "displayedObservations" : 54,
+        "environment" : "",
+        "object" : "oral_health_service_2012_",
+        "preview" : 0,
+        "totalObservations" : 54,
+        "variables" : 7
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
