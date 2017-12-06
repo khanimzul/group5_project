@@ -13,7 +13,8 @@ teeth_loss_6_crude_female_12_ <- read_csv("teeth loss 6 crude female'12 .csv")
 teeth_loss_6_crude_male_12_ <- read_csv("teeth loss 6 crude male'12csv.csv")
 
 library(ggplot2)
-View(mpg)
+
+View(data)
 
 names(data2)==names(data7)
 

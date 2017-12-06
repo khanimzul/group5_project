@@ -12,15 +12,15 @@
     "path" : null,
     "project_path" : null,
     "properties" : {
-        "cacheKey" : "826E612",
+        "cacheKey" : "44F5EA9D",
         "caption" : "data",
-        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=data&cache_key=826E612",
-        "displayedObservations" : 594,
-        "environment" : "",
+        "contentUrl" : "grid_resource/gridviewer.html?env=package%3Agroup5project&obj=data&cache_key=44F5EA9D",
+        "displayedObservations" : "594",
+        "environment" : "package:group5project",
         "object" : "data",
-        "preview" : 0,
-        "totalObservations" : 594,
-        "variables" : 7
+        "preview" : "0",
+        "totalObservations" : "594",
+        "variables" : "7"
     },
     "relative_order" : 4,
     "source_on_save" : false,
