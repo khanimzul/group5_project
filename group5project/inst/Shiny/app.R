@@ -1,68 +1,74 @@
 
 ui=fluidPage(
-  titlePanel("Basic DataTable"),
 
-  # Create a new Row in the UI for selectInputs
-  mainPanel(
+  titlePanel("Oral Health"),
 
-    fluidRow(
+  # Sidebar layout with input and output definitions ----
+  sidebarLayout(
 
-      column(4,
+    # Sidebar panel for inputs ----
+    sidebarPanel(
+
+      helpText("Instruction: Choose Topic of Interest to produce bar plot"),
+
+      column(12,
              selectInput("topicinterest",
-                         "Topic Interest:",
+                         "Topic of Interest:",
                          c("All", "Topic", "Year", "Category")
              )
       ),
 
-      column(4,
+      helpText("Instruction: Customize table with various variables as desired"),
+
+      column(12,
              selectInput("topic",
                          "Topic:",
                          c("All",
                            unique(as.character(data$Topic))))
       ),
 
-      column(4,
+      column(12,
              selectInput("locat",
                          "Location:",
                          c("All",
                            unique(as.character(data$Location))))
       ),
 
-      column(4,
+      column(12,
              selectInput("year",
                          "Year:",
                          c("All",
                            unique(as.character(data$Year))))
       ),
 
-      column(4,
+      column(12,
              selectInput("cat",
                          "Category:",
                          c("All", "Gender", "Race"))
       ),
-      column(4,
+      column(12,
              selectInput("gender",
                          "Gender:",
                          c("All", "Male", "Female"))
-      ),
+      )
 
+    ),
 
+    # Main panel for displaying outputs ----
+    mainPanel(
 
-
-      # Create a new row for the table.
-      fluidRow(
-        DT::dataTableOutput("table")
-      ),
-
-      h4("Plot"),
-      verbatimTextOutput("Plot"),
-
-      plotOutput("oralPlot")
+      # Output: Tabset w/ plot, summary, and table ----
+      tabsetPanel(type = "tabs",
+                  tabPanel("Plot", plotOutput("oralPlot")),
+                  tabPanel("Table",
+                           fluidRow(
+                             DT::dataTableOutput("table")
+                           ))
+      )
 
     )
   )
 )
-
 
 
 server=function(input, output) {
@@ -70,35 +76,32 @@ server=function(input, output) {
 
   # Filter data based on selections
   output$table <- DT::renderDataTable(DT::datatable({
+    if (input$topic != "All") {
+      data <- data[data$Topic == input$topic,]
+    }
+    if (input$locat != "All") {
+      data <- data[data$Location == input$locat,]
+    }
+    if (input$year != "All") {
+      data <- data[data$Year == input$year,]
+    }
+    if (input$cat != "All") {
 
-    if (input$topicinterest != "All") {
+      if (input$cat == "Gender") {
 
-      if (input$topic != "All") {
-        data <- data[data$Topic == input$topic,]
-      }
-      if (input$locat != "All") {
-        data <- data[data$Location == input$locat,]
-      }
-      if (input$year != "All") {
-        data <- data[data$Year == input$year,]
-      }
-      if (input$cat != "All") {
+        if(input$gender == "Male") {
+          data <- data[data$Category == "Male",]
+        }
 
-        if (input$cat == "Gender") {
-
-          if(input$gender == "Male") {
-            data <- data[data$Category == "Male",]
-          }
-
-          else if(input$gender == "Female") {
-            data <- data[data$Category == "Female",]
-          }
+        else if(input$gender == "Female") {
+          data <- data[data$Category == "Female",]
         }
       }
-      data
     }
+    data
   }
-  ))
+  )
+  )
 
 
   # Render a barplot
@@ -127,10 +130,10 @@ server=function(input, output) {
       barplot(count,
               main=input$topicinterest,
               horiz = TRUE,
-              ylab= "Topic Indicator",
+              ylab="Topic Indicator",
               xlab="Frequency",
-            xlim = c( 0 , 300))
-     }
+              xlim = c( 0 , 200))
+    }
   })
 
 }
