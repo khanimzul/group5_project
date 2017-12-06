@@ -34,3 +34,72 @@ data=rbind(data1,data2,data3,data4,data5,data6,data7,data8,data9,data10,data11)
 
 ##tab
 ##visual tools: boxplot, pie chart, histogram
+
+View(data)
+
+library(markdown)
+includeMarkdown(about.md)
+
+dataage=(data[,2]== "Crude Prevalence")
+
+dataage=TRUE
+
+oralhealth=data
+
+
+
+##histogram
+output$oralHist <- renderPlot({
+
+  #If else statement for input type
+  if (input$dataset != "--") {
+
+    if (input$dataset == "Dental Visit" && input$variable == "Age Prevalence") {
+
+      data= dentalvisit$Age
+
+    }else if(input$dataset == "Dental Visit" && input$variable == "Crude Prevalence"){
+
+      data= dentalvisit$Crude
+
+    }else if(input$dataset == "All Teeth Loss for Adult >=65 years" && input$variable == "Age Prevalence"){
+
+      data= allloss$Age
+
+    }else if(input$dataset == "All Teeth Loss for Adult >=65 years" && input$variable == "Crude Prevalence"){
+      data= allloss$Crude
+
+    }
+  }
+
+  hist(data,
+       main= c(input$dataset, input$variable),
+       ylab="Frequency")
+}
+)
+
+
+##Pie chart
+if (input$topicinterest != "--") {
+
+  if (input$topicinterest == "Topic") {
+
+    dataplot <- data[,4]
+
+  }else if(input$topicinterest == "Year") {
+
+    dataplot <- data[,2]
+
+  }else if(input$topicinterest == "Category") {
+
+    dataplot <- data[,7]
+
+  }
+
+  count= table(data)
+
+  # Render a barplot
+  mytable <- table(count)
+  lbls <- paste(names(mytable), "\n", mytable, sep="")
+  pie(mytable, labels = lbls,
+      main="Pie Chart of Indicator Variable")

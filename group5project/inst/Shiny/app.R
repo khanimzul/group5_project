@@ -9,12 +9,12 @@ ui=fluidPage(
     # Sidebar panel for inputs ----
     sidebarPanel(
 
-      helpText("Instruction: Choose Topic of Interest to produce bar plot"),
+      helpText("Instruction: Choose Topic of Interest to produce plot"),
 
       column(12,
              selectInput("topicinterest",
                          "Topic of Interest:",
-                         c("All", "Topic", "Year", "Category")
+                         c("--", "Topic", "Year", "Category")
              )
       ),
 
@@ -57,13 +57,15 @@ ui=fluidPage(
     # Main panel for displaying outputs ----
     mainPanel(
 
-      # Output: Tabset w/ plot, summary, and table ----
+      # Output: Tabset w/ plot, table, and about ----
       tabsetPanel(type = "tabs",
-                  tabPanel("Plot", plotOutput("oralPlot")),
+                  tabPanel("Bar Plot", plotOutput("oralPlot")),
+                  tabPanel("Pie Chart", plotOutput("oralpie")),
                   tabPanel("Table",
                            fluidRow(
                              DT::dataTableOutput("table")
-                           ))
+                           )),
+                  tabPanel("About", uiOutput("text"))
       )
 
     )
@@ -72,6 +74,70 @@ ui=fluidPage(
 
 
 server=function(input, output) {
+
+
+  # If else statement for input type
+
+  output$oralPlot <- renderPlot({
+
+    if (input$topicinterest != "--") {
+
+      if (input$topicinterest == "Topic") {
+
+        dataplot <- data[,4]
+
+      }else if(input$topicinterest == "Year") {
+
+        dataplot <- data[,2]
+
+      }else if(input$topicinterest == "Category") {
+
+        dataplot <- data[,7]
+
+      }
+
+      count= table(dataplot)
+
+      # Render a barplot
+      barplot(count,
+              main="Barplot of Indicator Variable",
+              xlab="Topic Indicator",
+              ylab="Frequency",
+              ylim = c( 0 , 500)
+              )
+
+    }
+  }
+  )
+
+  output$oralpie <- renderPlot({
+
+    if (input$topicinterest != "--") {
+
+      if (input$topicinterest == "Topic") {
+
+        dataplot <- data[,4]
+
+      }else if(input$topicinterest == "Year") {
+
+        dataplot <- data[,2]
+
+      }else if(input$topicinterest == "Category") {
+
+        dataplot <- data[,7]
+
+      }
+
+      count= table(dataplot)
+      lbls <- paste(names(count), "\n", count, sep="")
+
+      #Render piechart
+      pie(count, labels = lbls,
+          main="Pie Chart of Indicator Variable")
+
+    }
+  }
+  )
 
 
   # Filter data based on selections
@@ -83,7 +149,7 @@ server=function(input, output) {
       data <- data[data$Location == input$locat,]
     }
     if (input$year != "All") {
-      data <- data[data$Year == input$year,]
+      tabledata <- data[data$Year == input$year,]
     }
     if (input$cat != "All") {
 
@@ -91,9 +157,7 @@ server=function(input, output) {
 
         if(input$gender == "Male") {
           data <- data[data$Category == "Male",]
-        }
-
-        else if(input$gender == "Female") {
+        }else if(input$gender == "Female") {
           data <- data[data$Category == "Female",]
         }
       }
@@ -103,39 +167,25 @@ server=function(input, output) {
   )
   )
 
+  #Render text
 
-  # Render a barplot
+  list <- c(
+    "Measure definitions:",
+  "Prevalence = The measured or estimated percentage of people -- weighted to population characteristics – with an attribute or disease during a specific year.",
+  "Age-adjusted Prevalence = Prevalence (see above) standardized to the age distribution of a specific population, usually the U.S. 2000 standard population.",
+"Crude Prevalence = Prevalence standardized to the measured number of deaths, cases of conditions, diseases or hospitalizations during a specific year – incidence and mortality rates are per 100,000 persons; hospitalization rates are per 1,000 persons."
+  )
 
-  output$oralPlot <- renderPlot({
+  text.data <- as.data.frame(list)
 
-    if (input$topicinterest != "All") {
+  colnames(text.data) <- " "
 
-      if (input$topicinterest == "Topic") {
+  output$text <- renderTable({
 
-        data <- data[,4]
+    print(text.data)
 
-      }else if(input$topicinterest == "Year") {
-
-        data <- data[,2]
-
-      }else if(input$topicinterest == "Category") {
-
-        data <- data[,7]
-
-      }
-
-      count= table(data)
-
-      # Render a barplot
-      barplot(count,
-              main=input$topicinterest,
-              horiz = TRUE,
-              ylab="Topic Indicator",
-              xlab="Frequency",
-              xlim = c( 0 , 200))
-    }
   })
 
-}
+ }
 
 shinyApp(ui=ui, server=server)
