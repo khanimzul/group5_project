@@ -9,7 +9,7 @@ ui=fluidPage(
     # Sidebar panel for inputs ----
     sidebarPanel(
 
-      helpText("Choose discrete variable to produce plot:"),
+      helpText("Choose discrete variable to produce bar plot and pie chart:"),
 
       column(12,
              selectInput("disvar",
@@ -18,7 +18,7 @@ ui=fluidPage(
              )
       ),
 
-      helpText("Choose continuous variable to produce plot:"),
+      helpText("Choose continuous variable to histogram:"),
 
       column(12,
              selectInput("contvar",
@@ -27,7 +27,7 @@ ui=fluidPage(
              )
       ),
 
-      helpText("Customize table with various variables as desired:"),
+      helpText("Customize table with desired variables:"),
 
       column(12,
              selectInput("topic",
@@ -205,7 +205,7 @@ server=function(input, output) {
   list <- c(
     "Measure definitions:",
   "Prevalence = The measured or estimated percentage of people -- weighted to population characteristics – with an attribute or disease during a specific year.",
-  "Age-adjusted Prevalence = Prevalence (see above) standardized to the age distribution of a specific population, usually the U.S. 2000 standard population.",
+  "Age-adjusted Prevalence = Prevalence standardized to the age distribution of a specific population, usually the U.S. 2000 standard population.",
 "Crude Prevalence = Prevalence standardized to the measured number of deaths, cases of conditions, diseases or hospitalizations during a specific year – incidence and mortality rates are per 100,000 persons; hospitalization rates are per 1,000 persons."
   )
 
