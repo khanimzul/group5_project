@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1427445425",
+    "hash" : "256603337",
     "id" : "AE59D054",
-    "lastKnownWriteTime" : 1512553412,
-    "last_content_update" : 1512553412051,
+    "lastKnownWriteTime" : 1512620352,
+    "last_content_update" : 1512620352497,
     "path" : "F:/[STAT297]/group5_project/group5project/inst/Shiny/app.R",
     "project_path" : "inst/Shiny/app.R",
     "properties" : {
-        "cursorPosition" : "105,32",
-        "scrollLine" : "101"
+        "cursorPosition" : "11,57",
+        "scrollLine" : "2"
     },
     "relative_order" : 3,
     "source_on_save" : false,

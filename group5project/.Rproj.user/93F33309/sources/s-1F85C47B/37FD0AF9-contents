@@ -103,3 +103,10 @@ if (input$topicinterest != "--") {
   lbls <- paste(names(mytable), "\n", mytable, sep="")
   pie(mytable, labels = lbls,
       main="Pie Chart of Indicator Variable")
+
+
+  crude=data[data$`Data Type` == "Crude Prevalence",]
+
+  age=data[data$`Data Type` == "Age-adjusted Prevalence",]
+
+devtools::use_data(crude)

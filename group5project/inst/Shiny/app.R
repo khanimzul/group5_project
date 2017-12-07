@@ -9,16 +9,25 @@ ui=fluidPage(
     # Sidebar panel for inputs ----
     sidebarPanel(
 
-      helpText("Instruction: Choose Topic of Interest to produce plot"),
+      helpText("Choose discrete variable to produce plot:"),
 
       column(12,
-             selectInput("topicinterest",
-                         "Topic of Interest:",
+             selectInput("disvar",
+                         "Discrete Variable:",
                          c("--", "Topic", "Year", "Category")
              )
       ),
 
-      helpText("Instruction: Customize table with various variables as desired"),
+      helpText("Choose continuous variable to produce plot:"),
+
+      column(12,
+             selectInput("contvar",
+                         "Continuous Variable:",
+                         c("--", "Age", "Crude")
+             )
+      ),
+
+      helpText("Customize table with various variables as desired:"),
 
       column(12,
              selectInput("topic",
@@ -59,13 +68,16 @@ ui=fluidPage(
 
       # Output: Tabset w/ plot, table, and about ----
       tabsetPanel(type = "tabs",
-                  tabPanel("Bar Plot", plotOutput("oralPlot")),
-                  tabPanel("Pie Chart", plotOutput("oralpie")),
+                  tabPanel("Discrete Variables",
+                           plotOutput("oralPlot"),
+                           plotOutput("oralpie")),
+                  tabPanel("Continuous Variables",
+                           plotOutput("histPlot")),
                   tabPanel("Table",
                            fluidRow(
                              DT::dataTableOutput("table")
                            )),
-                  tabPanel("About", uiOutput("text"))
+                  tabPanel("Definition", uiOutput("text"))
       )
 
     )
@@ -76,21 +88,21 @@ ui=fluidPage(
 server=function(input, output) {
 
 
-  # If else statement for input type
+  # If else statement for bar plot
 
   output$oralPlot <- renderPlot({
 
-    if (input$topicinterest != "--") {
+    if (input$disvar != "--") {
 
-      if (input$topicinterest == "Topic") {
+      if (input$disvar == "Topic") {
 
         dataplot <- data[,4]
 
-      }else if(input$topicinterest == "Year") {
+      }else if(input$disvar == "Year") {
 
         dataplot <- data[,2]
 
-      }else if(input$topicinterest == "Category") {
+      }else if(input$disvar == "Category") {
 
         dataplot <- data[,7]
 
@@ -112,17 +124,17 @@ server=function(input, output) {
 
   output$oralpie <- renderPlot({
 
-    if (input$topicinterest != "--") {
+    if (input$disvar != "--") {
 
-      if (input$topicinterest == "Topic") {
+      if (input$disvar == "Topic") {
 
         dataplot <- data[,4]
 
-      }else if(input$topicinterest == "Year") {
+      }else if(input$disvar == "Year") {
 
         dataplot <- data[,2]
 
-      }else if(input$topicinterest == "Category") {
+      }else if(input$disvar == "Category") {
 
         dataplot <- data[,7]
 
@@ -134,6 +146,27 @@ server=function(input, output) {
       #Render piechart
       pie(count, labels = lbls,
           main="Pie Chart of Indicator Variable")
+
+    }
+  }
+  )
+
+  output$histPlot <- renderPlot({
+
+    if (input$contvar != "--") {
+
+      if (input$contvar == "Age") {
+
+        data=age$`Data Value`
+
+      }else if(input$contvar == "Crude") {
+
+        data=crude$`Data Value`
+
+      }
+
+    #Render histogram
+     hist(data)
 
     }
   }
@@ -185,6 +218,8 @@ server=function(input, output) {
     print(text.data)
 
   })
+
+
 
  }
 
