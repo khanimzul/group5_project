@@ -59,9 +59,12 @@ ui=fluidPage(
              selectInput("gender",
                          "Gender:",
                          c("All", "Male", "Female"))
-      )
-
-    ),
+      ),
+      column(12,
+             selectInput("race",
+                         "Race:",
+                         c("All", "Black", "White","Multiracial","Other","Hispanic"))
+  )),
 
     # Main panel for displaying outputs ----
     mainPanel(
@@ -193,7 +196,21 @@ server=function(input, output) {
         }else if(input$gender == "Female") {
           data <- data[data$Category == "Female",]
         }
-      }
+      }else if (input$cat == "Race") {
+
+        if(input$race == "Black") {
+          data <- data[data$Category == "Black",]
+        }else if(input$race == "White") {
+          data <- data[data$Category == "White",]
+        }else if(input$race == "MultiRacial") {
+          data <- data[data$Category == "Multiracial",]
+        }else if(input$race == "Other") {
+          data <- data[data$Category == "Other",]
+        }else if(input$race == "Hispanic") {
+          data <- data[data$Category == "Hispanic",]
+        }
+
+    }
     }
     data
   }
