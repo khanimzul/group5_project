@@ -107,4 +107,6 @@ write.csv(data5, "teeth_loss_6_crude_female_12_.csv")
 
 names(data49)==names(data87)
 
+
+
 median(data$`Data Value`)

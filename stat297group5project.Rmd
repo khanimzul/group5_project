@@ -1,6 +1,6 @@
 install.pacakages("shiny")
 install.packages("DT")
-devtools::install_github("kanimzul/group5_project/stat297datasets")
+devtools::install_github("khanimzul/group5_project/stat297datasets")
 devtools::install_github("khanimzul/group5_project/group5project")
 
 library(group5project)
