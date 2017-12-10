@@ -1,6 +1,10 @@
 {
-    "path" : "F:/[STAT297]/group5_project/group5project/data",
+    "path" : "F:/[STAT297]/inclassdemo",
     "sortOrder" : [
+        {
+            "ascending" : false,
+            "columnIndex" : 4
+        },
         {
             "ascending" : true,
             "columnIndex" : 2
