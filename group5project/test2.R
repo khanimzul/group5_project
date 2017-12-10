@@ -1,18 +1,3 @@
-library(readr)
-
-oral_health_service_2012_ <- read_delim("oral health service (2012).csv",
-                                        "\t", escape_double = FALSE, trim_ws = TRUE)
-
-oral_health_service_2013_ <- read_delim("oral health service (2013).csv",
-                                        "\t", escape_double = FALSE, trim_ws = TRUE)
-
-oral_health_service_2014_ <- read_delim("oral health service (2014).csv",
-                                        "\t", escape_double = FALSE, trim_ws = TRUE)
-
-teeth_loss_6_crude_female_12_ <- read_csv("teeth loss 6 crude female'12 .csv")
-teeth_loss_6_crude_male_12_ <- read_csv("teeth loss 6 crude male'12csv.csv")
-
-library(ggplot2)
 
 View(data)
 
@@ -118,83 +103,8 @@ data=rbind(data,data50,data51,data52,data53,data54,data55,data56,data57,data58,d
 
 data=rbind(data,data73,data74,data75,data76,data77,data78,data79,data80,data81,data82,data83,data84,data85,data86,data87,data88,data89,data90,data91,data92)
 
-##tab
-##visual tools: boxplot, pie chart, histogram
+write.csv(data5, "teeth_loss_6_crude_female_12_.csv")
 
-View(data)
+names(data49)==names(data87)
 
-library(markdown)
-includeMarkdown(about.md)
-
-dataage=(data[,2]== "Crude Prevalence")
-
-dataage=TRUE
-
-oralhealth=data
-
-
-
-##histogram
-output$oralHist <- renderPlot({
-
-  #If else statement for input type
-  if (input$dataset != "--") {
-
-    if (input$dataset == "Dental Visit" && input$variable == "Age Prevalence") {
-
-      data= dentalvisit$Age
-
-    }else if(input$dataset == "Dental Visit" && input$variable == "Crude Prevalence"){
-
-      data= dentalvisit$Crude
-
-    }else if(input$dataset == "All Teeth Loss for Adult >=65 years" && input$variable == "Age Prevalence"){
-
-      data= allloss$Age
-
-    }else if(input$dataset == "All Teeth Loss for Adult >=65 years" && input$variable == "Crude Prevalence"){
-      data= allloss$Crude
-
-    }
-  }
-
-  hist(data,
-       main= c(input$dataset, input$variable),
-       ylab="Frequency")
-}
-)
-
-
-##Pie chart
-if (input$topicinterest != "--") {
-
-  if (input$topicinterest == "Topic") {
-
-    dataplot <- data[,4]
-
-  }else if(input$topicinterest == "Year") {
-
-    dataplot <- data[,2]
-
-  }else if(input$topicinterest == "Category") {
-
-    dataplot <- data[,7]
-
-  }
-}
-  count= table(data)
-
-  # Render a barplot
-  mytable <- table(count)
-  lbls <- paste(names(mytable), "\n", mytable, sep="")
-  pie(mytable, labels = lbls,
-      main="Pie Chart of Indicator Variable")
-
-
-  crude=data[data$`Data Type` == "Crude Prevalence",]
-
-  age=data[data$`Data Type` == "Age-adjusted Prevalence",]
-
-devtools::use_data(crude)
-
-names(data49)==names(data50)
+median(data$`Data Value`)
