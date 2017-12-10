@@ -57,9 +57,19 @@ data37= NotoothlossHispanic12_Age
 data38=NotoothlossHispanic12_Crude
 data39=NotoothlossHispanic14_Age
 data40=NotoothlossHispanic14_Crude
+data41=age_dentalvisit_18ormore_female_12
+data42=age_dentalvisit_18ormore_female_14
+data43=age_dentalvisit_18ormore_male_12
+data44=age_dentalvisit_18ormore_male_14
+data45=crude_dentalsit_18ormore_male_14
+data46=crude_dentalvisit_18ormore_female_12
+data47=crude_dentalvisit_18ormore_female_14
+data48=crude_dentalvisit_18ormore_male_12
+data49=crude_dentalvisit_18ormore_male_14
 
 data=rbind(data1,data2,data3,data4,data5,data6,data8,data9,data10,data11,data12,data13,data14,data15,data16,data17,data18,data19,data20,data21,data22,data23,data24,data25,data26,data27,data28,data29,data30,data31,data32,data33,data34,data35,data36,data37,data38,data39,data40)
 
+data=rbind(data,data41,data42,data43,data44,data45,data46,data47,data48,data49)
 ##tab
 ##visual tools: boxplot, pie chart, histogram
 
