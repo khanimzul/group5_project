@@ -20,3 +20,16 @@ GroupSummary(x)
 
 write.csv(DentalVisitHispanic14_Age, file="DentalVisitHispanic14_Age.csv",row.names = FALSE)
 
+
+crude=data[data$`Data Type`=="Crude Prevalence",]
+age=data[data$`Data Type`=="Age-adjusted Prevalence",]
+
+mm_sd=function(){
+  x=crude
+  
+  a=mean(x)
+  b=median(x)
+  c=sd
+  
+}d=c(a,b,c)
+return(d)
