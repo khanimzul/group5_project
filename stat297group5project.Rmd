@@ -5,4 +5,4 @@ devtools::install_github("khanimzul/group5_project/group5project")
 
 library(group5project)
 MC_gui()
-
+ 

@@ -16,3 +16,7 @@
 
 
 GroupSummary(x)
+
+
+write.csv(DentalVisitHispanic14_Age, file="DentalVisitHispanic14_Age.csv",row.names = FALSE)
+

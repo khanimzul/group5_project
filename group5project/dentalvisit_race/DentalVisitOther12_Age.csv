@@ -1,55 +1,55 @@
-ID,Year,Location ,Data Type ,Data Value,Category
-165812,2012,Alabama,AgeAdjPrev,53.3,Other
-165804,2012,Alaska,AgeAdjPrev,64.3,Other
-165828,2012,Arizona,AgeAdjPrev,67.2,Other
-165820,2012,Arkansas,AgeAdjPrev,36.7,Other
-165836,2012,California,AgeAdjPrev,74.4,Other
-165844,2012,Colorado,AgeAdjPrev,62.4,Other
-165858,2012,Connecticut,AgeAdjPrev,64.9,Other
-165874,2012,Delaware,AgeAdjPrev,74.3,Other
-165866,2012,District of Columbia,AgeAdjPrev,71.2,Other
-165882,2012,Florida,AgeAdjPrev,58.9,Other
-165890,2012,Georgia,AgeAdjPrev,55.9,Other
-165898,2012,Guam,AgeAdjPrev,50.5,Other
-165906,2012,Hawaii,AgeAdjPrev,71.2,Other
-165922,2012,Idaho,AgeAdjPrev,59.5,Other
-165930,2012,Illinois,AgeAdjPrev,66.2,Other
-165938,2012,Indiana,AgeAdjPrev,52.1,Other
-165914,2012,Iowa,AgeAdjPrev,69.9,Other
-165946,2012,Kansas,AgeAdjPrev,55.6,Other
-165954,2012,Kentucky,AgeAdjPrev,47.2,Other
-166307,2012,Louisiana,AgeAdjPrev,43.4,Other
-166331,2012,Maine,AgeAdjPrev,54.4,Other
-166323,2012,Maryland,AgeAdjPrev,70.6,Other
-166315,2012,Massachusetts,AgeAdjPrev,72.8,Other
-166339,2012,Michigan,AgeAdjPrev,58.9,Other
-166347,2012,Minnesota,AgeAdjPrev,67.5,Other
-166363,2012,Mississippi,AgeAdjPrev,65.6,Other
-166355,2012,Missouri,AgeAdjPrev,56.7,Other
-166371,2012,Montana,AgeAdjPrev,54.6,Other
-166395,2012,Nebraska,AgeAdjPrev,68.3,Other
-165971,2012,Nevada,AgeAdjPrev,64.5,Other
-166403,2012,New Hampshire,AgeAdjPrev,65.4,Other
-165955,2012,New Jersey,AgeAdjPrev,67.5,Other
-165963,2012,New Mexico,AgeAdjPrev,56.9,Other
-165979,2012,New York,AgeAdjPrev,64.1,Other
-166379,2012,North Carolina,AgeAdjPrev,63.3,Other
-166387,2012,North Dakota,AgeAdjPrev,52.7,Other
-165987,2012,Ohio,AgeAdjPrev,60.4,Other
-165995,2012,Oklahoma,AgeAdjPrev,62.7,Other
-166003,2012,Oregon,AgeAdjPrev,67.3,Other
-166011,2012,Pennsylvania,AgeAdjPrev,61.3,Other
-166019,2012,Puerto Rico,AgeAdjPrev,,Other
-166027,2012,Rhode Island,AgeAdjPrev,68,Other
-166035,2012,South Carolina,AgeAdjPrev,56,Other
-166043,2012,South Dakota,AgeAdjPrev,60,Other
-166051,2012,Tennessee,AgeAdjPrev,54.7,Other
-166059,2012,Texas,AgeAdjPrev,64,Other
-166416,2012,Utah,AgeAdjPrev,69.9,Other
-166440,2012,Vermont,AgeAdjPrev,53.5,Other
-166432,2012,Virgin Islands,AgeAdjPrev,,Other
-166424,2012,Virginia,AgeAdjPrev,67,Other
-166448,2012,Washington,AgeAdjPrev,69.4,Other
-166464,2012,West Virginia,AgeAdjPrev,41.3,Other
-166456,2012,Wisconsin,AgeAdjPrev,61,Other
-166472,2012,Wyoming,AgeAdjPrev,60.7,Other
+ID,Year,Location,Data Type,Data Value,Category
+165812,2012,Alabama,Age-adjusted Prevalence,53.3,Other
+165804,2012,Alaska,Age-adjusted Prevalence,64.3,Other
+165828,2012,Arizona,Age-adjusted Prevalence,67.2,Other
+165820,2012,Arkansas,Age-adjusted Prevalence,36.7,Other
+165836,2012,California,Age-adjusted Prevalence,74.4,Other
+165844,2012,Colorado,Age-adjusted Prevalence,62.4,Other
+165858,2012,Connecticut,Age-adjusted Prevalence,64.9,Other
+165874,2012,Delaware,Age-adjusted Prevalence,74.3,Other
+165866,2012,District of Columbia,Age-adjusted Prevalence,71.2,Other
+165882,2012,Florida,Age-adjusted Prevalence,58.9,Other
+165890,2012,Georgia,Age-adjusted Prevalence,55.9,Other
+165898,2012,Guam,Age-adjusted Prevalence,50.5,Other
+165906,2012,Hawaii,Age-adjusted Prevalence,71.2,Other
+165922,2012,Idaho,Age-adjusted Prevalence,59.5,Other
+165930,2012,Illinois,Age-adjusted Prevalence,66.2,Other
+165938,2012,Indiana,Age-adjusted Prevalence,52.1,Other
+165914,2012,Iowa,Age-adjusted Prevalence,69.9,Other
+165946,2012,Kansas,Age-adjusted Prevalence,55.6,Other
+165954,2012,Kentucky,Age-adjusted Prevalence,47.2,Other
+166307,2012,Louisiana,Age-adjusted Prevalence,43.4,Other
+166331,2012,Maine,Age-adjusted Prevalence,54.4,Other
+166323,2012,Maryland,Age-adjusted Prevalence,70.6,Other
+166315,2012,Massachusetts,Age-adjusted Prevalence,72.8,Other
+166339,2012,Michigan,Age-adjusted Prevalence,58.9,Other
+166347,2012,Minnesota,Age-adjusted Prevalence,67.5,Other
+166363,2012,Mississippi,Age-adjusted Prevalence,65.6,Other
+166355,2012,Missouri,Age-adjusted Prevalence,56.7,Other
+166371,2012,Montana,Age-adjusted Prevalence,54.6,Other
+166395,2012,Nebraska,Age-adjusted Prevalence,68.3,Other
+165971,2012,Nevada,Age-adjusted Prevalence,64.5,Other
+166403,2012,New Hampshire,Age-adjusted Prevalence,65.4,Other
+165955,2012,New Jersey,Age-adjusted Prevalence,67.5,Other
+165963,2012,New Mexico,Age-adjusted Prevalence,56.9,Other
+165979,2012,New York,Age-adjusted Prevalence,64.1,Other
+166379,2012,North Carolina,Age-adjusted Prevalence,63.3,Other
+166387,2012,North Dakota,Age-adjusted Prevalence,52.7,Other
+165987,2012,Ohio,Age-adjusted Prevalence,60.4,Other
+165995,2012,Oklahoma,Age-adjusted Prevalence,62.7,Other
+166003,2012,Oregon,Age-adjusted Prevalence,67.3,Other
+166011,2012,Pennsylvania,Age-adjusted Prevalence,61.3,Other
+166019,2012,Puerto Rico,Age-adjusted Prevalence,0,Other
+166027,2012,Rhode Island,Age-adjusted Prevalence,68,Other
+166035,2012,South Carolina,Age-adjusted Prevalence,56,Other
+166043,2012,South Dakota,Age-adjusted Prevalence,60,Other
+166051,2012,Tennessee,Age-adjusted Prevalence,54.7,Other
+166059,2012,Texas,Age-adjusted Prevalence,64,Other
+166416,2012,Utah,Age-adjusted Prevalence,69.9,Other
+166440,2012,Vermont,Age-adjusted Prevalence,53.5,Other
+166432,2012,Virgin Islands,Age-adjusted Prevalence,0,Other
+166424,2012,Virginia,Age-adjusted Prevalence,67,Other
+166448,2012,Washington,Age-adjusted Prevalence,69.4,Other
+166464,2012,West Virginia,Age-adjusted Prevalence,41.3,Other
+166456,2012,Wisconsin,Age-adjusted Prevalence,61,Other
+166472,2012,Wyoming,Age-adjusted Prevalence,60.7,Other
