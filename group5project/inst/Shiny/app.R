@@ -33,21 +33,21 @@ ui=fluidPage(
              selectInput("topic",
                          "Topic:",
                          c("All",
-                           unique(as.character(data$Topic))))
+                           unique(as.character(data()$Topic))))
       ),
 
       column(12,
              selectInput("locat",
                          "Location:",
                          c("All",
-                           unique(as.character(data$Location))))
+                           unique(as.character(data()$Location))))
       ),
 
       column(12,
              selectInput("year",
                          "Year:",
                          c("All",
-                           unique(as.character(data$Year))))
+                           unique(as.character(data()$Year))))
       ),
 
       column(12,
@@ -99,15 +99,15 @@ server=function(input, output) {
 
       if (input$disvar == "Topic") {
 
-        dataplot <- data[,4]
+        dataplot <- data()[,4]
 
       }else if(input$disvar == "Year") {
 
-        dataplot <- data[,2]
+        dataplot <- data()[,2]
 
       }else if(input$disvar == "Category") {
 
-        dataplot <- data[,7]
+        dataplot <- data()[,7]
 
       }
 
@@ -131,15 +131,15 @@ server=function(input, output) {
 
       if (input$disvar == "Topic") {
 
-        dataplot <- data[,4]
+        dataplot <- data()[,4]
 
       }else if(input$disvar == "Year") {
 
-        dataplot <- data[,2]
+        dataplot <- data()[,2]
 
       }else if(input$disvar == "Category") {
 
-        dataplot <- data[,7]
+        dataplot <- data()[,7]
 
       }
 
@@ -179,35 +179,35 @@ server=function(input, output) {
   # Filter data based on selections
   output$table <- DT::renderDataTable(DT::datatable({
     if (input$topic != "All") {
-      data <- data[data$Topic == input$topic,]
+      data <- data[data()$Topic == input$topic,]
     }
     if (input$locat != "All") {
-      data <- data[data$Location == input$locat,]
+      data <- data[data()$Location == input$locat,]
     }
     if (input$year != "All") {
-      tabledata <- data[data$Year == input$year,]
+      tabledata <- data[data()$Year == input$year,]
     }
     if (input$cat != "All") {
 
       if (input$cat == "Gender") {
 
         if(input$gender == "Male") {
-          data <- data[data$Category == "Male",]
+          data <- data[data()$Category == "Male",]
         }else if(input$gender == "Female") {
-          data <- data[data$Category == "Female",]
+          data <- data[data()$Category == "Female",]
         }
       }else if (input$cat == "Race") {
 
         if(input$race == "Black") {
-          data <- data[data$Category == "Black",]
+          data <- data[data()$Category == "Black",]
         }else if(input$race == "White") {
-          data <- data[data$Category == "White",]
+          data <- data[data()$Category == "White",]
         }else if(input$race == "MultiRacial") {
-          data <- data[data$Category == "Multiracial",]
+          data <- data[data()$Category == "Multiracial",]
         }else if(input$race == "Other") {
-          data <- data[data$Category == "Other",]
+          data <- data[data()$Category == "Other",]
         }else if(input$race == "Hispanic") {
-          data <- data[data$Category == "Hispanic",]
+          data <- data[data()$Category == "Hispanic",]
         }
 
     }
