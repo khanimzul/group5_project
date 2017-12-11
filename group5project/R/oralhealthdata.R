@@ -1,0 +1,29 @@
+#' Chronic disease indicator- Oral Health
+#'
+#' Data is obtained from Center for Disease Control and Prevention website,https://www.cdc.gov/cdi/
+#' The chronic disease indicators (CDI) are a set of surveillance indicators developed by consensus among CDC, the Council of State and Territorial Epidemiologists (CSTE),
+#' and the National Association of Chronic Disease Directors (NACDD).
+#' CDI enables public health professionals and policymakers to retrieve uniformly defined state and selected metropolitan-level data for chronic diseases
+#' and risk factors that have a substantial impact on public health.
+#' These indicators are essential for surveillance, prioritization, and evaluation of public health interventions.
+#'  .
+#'
+#' @docType data
+#'
+#' @usage data(oralhealthdata)
+#'
+#' @format  A \code{matrix} with 5771 observations and 7 columns. The columns are defined as follows:
+#' \describe{
+#'  \item{\code{ID}}{identification number for each state}
+#'  \item{\code{Year}}{Year of data collection}
+#'  \item{\code{Location}}{Location of data collected}
+#'  \item{\code{Topic}}{Topic Indicator}
+#'  \item{\code{Data Type}}{Type ofdata value}
+#'  \item{\code{Data Value}}{obseration value}
+#'  \item{\code{Category}}{indicator variable}
+#'  }
+#'
+#' @keywords datasets
+#'
+#' @source {https://www.cdc.gov/cdi}
+"oralhealthdata"

@@ -1,6 +1,6 @@
 Package: group5project
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Group5Project package
 Version: 0.1.0
 Authors@R: c(
     person("Shafiqah", "Azman", email = "sza5348@psu.edu", role = c("aut","cre")),
@@ -9,8 +9,7 @@ Authors@R: c(
     person("Hanim", "Zulhaimi", role = "aut")
     )
 Maintainer: Shafiqah Azman <sza5348@psu.edu>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Package will visualize crude prevalence and age-adjusted prevalence data.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true

@@ -1,5 +1,3 @@
-
-
 library(DT)
 
 ui=fluidPage(
@@ -74,7 +72,6 @@ ui=fluidPage(
                          "Race:",
                          c("All", "Black", "White","Multiracial","Other","Hispanic"))
       )),
-
     # Main panel for displaying outputs ----
     mainPanel(
 
@@ -84,14 +81,14 @@ ui=fluidPage(
                            plotOutput("oralpie", width = 500)),
                   tabPanel("Continuous Variables",
                            plotOutput("histPlot")),
-                  tabPanel("Table",
-                           fluidRow(DT::dataTableOutput("table"))),
+                  tabPanel("Table",fluidRow(DT::dataTableOutput("table"))),
                   tabPanel("Definition", uiOutput("text"))
       )
-
     )
+
   )
 )
+
 
 
 server=function(input, output) {
@@ -105,15 +102,15 @@ server=function(input, output) {
 
       if (input$disvar == "Topic") {
 
-        dataplot <- data[,4]
+        dataplot <- oralhealthdata[,4]
 
       }else if(input$disvar == "Year") {
 
-        dataplot <- data[,2]
+        dataplot <- oralhealthdata[,2]
 
       }else if(input$disvar == "Category") {
 
-        dataplot <- data[,7]
+        dataplot <- oralhealthdata[,7]
 
       }
 
@@ -139,15 +136,15 @@ server=function(input, output) {
 
       if (input$disvar == "Topic") {
 
-        dataplot <- data[,4]
+        dataplot <- oralhealthdata[,4]
 
       }else if(input$disvar == "Year") {
 
-        dataplot <- data[,2]
+        dataplot <- oralhealthdata[,2]
 
       }else if(input$disvar == "Category") {
 
-        dataplot <- data[,7]
+        dataplot <- oralhealthdata[,7]
 
       }
 
@@ -167,14 +164,15 @@ server=function(input, output) {
     if (input$contvar != "--") {
 
       if (input$contvar == "Age") {
-        dataage=data[data$`Data Type` == "Age-adjusted Prevalence",]
+        dataage=oralhealthdata[oralhealthdata$`Data Type` == "Age-adjusted Prevalence",]
+
         age=dataage$`Data Value`
 
         data=age
 
       }else if(input$contvar == "Crude") {
 
-        datacrude=data[data$`Data Type` == "Crude Prevalence",]
+        datacrude=oralhealthdata[oralhealthdata$`Data Type` == "Crude Prevalence",]
 
         crude=datacrude$`Data Value`
 
@@ -189,43 +187,50 @@ server=function(input, output) {
   }
   )
 
-library(DT)
 
   # Filter data based on selections
   output$table <- DT::renderDataTable(DT::datatable({
+    if (input$topic != "All") {
+      data <- oralhealthdata[oralhealthdata$Topic == input$topic,]
+    }
+    if (input$locat != "All") {
+      data <- oralhealthdata[oralhealthdata$Location == input$locat,]
+    }
+    if (input$year != "All") {
+      data <- oralhealthdata[oralhealthdata$Year == input$year,]
+    }
+    if (input$cat != "All") {
 
-      if (input$topic != "All") {
-        data <- as.matrix(data[data$Topic == input$topic,])
-        data=data.frame(data)
-      }
-      if (input$locat != "All") {
-        data <- as.matrix(data[data$Location == input$locat,])
-        data=data.frame(data)
-      }
-      if (input$year != "All") {
-        data  <- as.matrix(data[data$Year == input$year,])
-        data=data.frame(data)
-      }
-      if (input$cat != "All") {
+      if (input$cat == "Gender") {
 
-        if (input$cat == "Gender") {
-
-          data <- as.matrix(data[data$Category == input$gender,])
-          data=data.frame(data)
+        if(input$gender == "Male") {
+          data <- oralhealthdata[oralhealthdata$Category == "Male",]
+        }else if(input$gender == "Female") {
+          data <- oralhealthdata[oralhealthdata$Category == "Female",]
 
         }else if (input$cat == "Race") {
 
-          data <- as.matrix(data[data$Category == input$race,])
-          data=data.frame(data)
-      }
+          if(input$race == "Black") {
+            data <- oralhealthdata[oralhealthdata$Category == "Black",]
+          }else if(input$race == "White") {
+            data <- oralhealthdata[oralhealthdata$Category == "White",]
+          }else if(input$race == "MultiRacial") {
+            data <- oralhealthdata[oralhealthdata$Category == "Multiracial",]
+          }else if(input$race == "Other") {
+            data <- oralhealthdata[oralhealthdata$Category == "Other",]
+          }else if(input$race == "Hispanic") {
+            data <- oralhealthdata[oralhealthdata$Category == "Hispanic",]
+          }
 
+        }
       }
+    }
     data
   }
   )
   )
 
-  #Render textdata
+  #Render text
 
   list <- c(
     "Measure definitions:",
@@ -246,8 +251,8 @@ library(DT)
 
   options(shiny.sanitize.errors = FALSE)
 
+
 }
 
 shinyApp(ui=ui, server=server)
-
 
