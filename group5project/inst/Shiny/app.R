@@ -1,4 +1,7 @@
 
+
+library(DT)
+
 ui=fluidPage(
 
   titlePanel("Oral Health"),
@@ -32,22 +35,28 @@ ui=fluidPage(
       column(12,
              selectInput("topic",
                          "Topic:",
-                         c("All",
-                           unique(as.character(data()$Topic))))
+                         c("All","All teeth lost among adults aged >= 65 years","No tooth loss among adults aged 18-64 years",
+                           "Oral Health Service ","Six or more teeth lost among adults aged >= 65 years","Visits to dentist or dental clinic among adults aged >= 18 years"))
       ),
 
       column(12,
              selectInput("locat",
                          "Location:",
-                         c("All",
-                           unique(as.character(data()$Location))))
+                         c("All","Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware",
+                           "District of Columbia","Florida","Georgia","Guam","Hawaii","Idaho","Illinois",
+                           "Indiana","Iowa","Kansas","Kentucky","Lousiana","Maine","Maryland","Massachusetts",
+                           "Michigan","Minnesota","Mississppi","Missouri","Montana","Nebraska","Nevada","New Hampshire",
+                           "New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon",
+                           "Pennsylvania","Puerto Rico","Rhode Island","South Carolina","South Dakota","Tennessee","Texas",
+                           "United State","Utah","Vermont","Virgin Island","Virginia","Washington","West Verginia","Wisconsin",
+                           "Wyoming"))
+
       ),
 
       column(12,
              selectInput("year",
                          "Year:",
-                         c("All",
-                           unique(as.character(data()$Year))))
+                         c("All","2012","2013","2014","2015"))
       ),
 
       column(12,
@@ -64,7 +73,7 @@ ui=fluidPage(
              selectInput("race",
                          "Race:",
                          c("All", "Black", "White","Multiracial","Other","Hispanic"))
-  )),
+      )),
 
     # Main panel for displaying outputs ----
     mainPanel(
@@ -72,14 +81,11 @@ ui=fluidPage(
       # Output: Tabset w/ plot, table, and about ----
       tabsetPanel(type = "tabs",
                   tabPanel("Discrete Variables",
-                           plotOutput("oralPlot"),
-                           plotOutput("oralpie")),
+                           plotOutput("oralpie", width = 500)),
                   tabPanel("Continuous Variables",
                            plotOutput("histPlot")),
                   tabPanel("Table",
-                           fluidRow(
-                             DT::dataTableOutput("table")
-                           )),
+                           fluidRow(DT::dataTableOutput("table"))),
                   tabPanel("Definition", uiOutput("text"))
       )
 
@@ -99,15 +105,15 @@ server=function(input, output) {
 
       if (input$disvar == "Topic") {
 
-        dataplot <- data()[,4]
+        dataplot <- data[,4]
 
       }else if(input$disvar == "Year") {
 
-        dataplot <- data()[,2]
+        dataplot <- data[,2]
 
       }else if(input$disvar == "Category") {
 
-        dataplot <- data()[,7]
+        dataplot <- data[,7]
 
       }
 
@@ -116,10 +122,12 @@ server=function(input, output) {
       # Render a barplot
       barplot(count,
               main="Barplot of Indicator Variable",
-              xlab="Topic Indicator",
-              ylab="Frequency",
-              ylim = c( 0 , 500)
-              )
+              horiz = TRUE,
+              ylab="Topic Indicator",
+              xlab="Frequency",
+              xlim = c( 0 , 400)
+
+      )
 
     }
   }
@@ -131,15 +139,15 @@ server=function(input, output) {
 
       if (input$disvar == "Topic") {
 
-        dataplot <- data()[,4]
+        dataplot <- data[,4]
 
       }else if(input$disvar == "Year") {
 
-        dataplot <- data()[,2]
+        dataplot <- data[,2]
 
       }else if(input$disvar == "Category") {
 
-        dataplot <- data()[,7]
+        dataplot <- data[,7]
 
       }
 
@@ -148,7 +156,7 @@ server=function(input, output) {
 
       #Render piechart
       pie(count, labels = lbls,
-          main="Pie Chart of Indicator Variable")
+          main="Pie Chart of Indicator Variable", radius=1)
 
     }
   }
@@ -159,71 +167,71 @@ server=function(input, output) {
     if (input$contvar != "--") {
 
       if (input$contvar == "Age") {
+        dataage=data[data$`Data Type` == "Age-adjusted Prevalence",]
+        age=dataage$`Data Value`
 
-        data=age$`Data Value`
+        data=age
 
       }else if(input$contvar == "Crude") {
 
-        data=crude$`Data Value`
+        datacrude=data[data$`Data Type` == "Crude Prevalence",]
+
+        crude=datacrude$`Data Value`
+
+        data=crude
 
       }
 
-    #Render histogram
-     hist(data)
+      #Render histogram
+      hist(data)
 
     }
   }
   )
 
+library(DT)
 
   # Filter data based on selections
   output$table <- DT::renderDataTable(DT::datatable({
-    if (input$topic != "All") {
-      data <- data[data()$Topic == input$topic,]
-    }
-    if (input$locat != "All") {
-      data <- data[data()$Location == input$locat,]
-    }
-    if (input$year != "All") {
-      tabledata <- data[data()$Year == input$year,]
-    }
-    if (input$cat != "All") {
 
-      if (input$cat == "Gender") {
+      if (input$topic != "All") {
+        data <- as.matrix(data[data$Topic == input$topic,])
+        data=data.frame(data)
+      }
+      if (input$locat != "All") {
+        data <- as.matrix(data[data$Location == input$locat,])
+        data=data.frame(data)
+      }
+      if (input$year != "All") {
+        data  <- as.matrix(data[data$Year == input$year,])
+        data=data.frame(data)
+      }
+      if (input$cat != "All") {
 
-        if(input$gender == "Male") {
-          data <- data[data()$Category == "Male",]
-        }else if(input$gender == "Female") {
-          data <- data[data()$Category == "Female",]
-        }
-      }else if (input$cat == "Race") {
+        if (input$cat == "Gender") {
 
-        if(input$race == "Black") {
-          data <- data[data()$Category == "Black",]
-        }else if(input$race == "White") {
-          data <- data[data()$Category == "White",]
-        }else if(input$race == "MultiRacial") {
-          data <- data[data()$Category == "Multiracial",]
-        }else if(input$race == "Other") {
-          data <- data[data()$Category == "Other",]
-        }else if(input$race == "Hispanic") {
-          data <- data[data()$Category == "Hispanic",]
-        }
+          data <- as.matrix(data[data$Category == input$gender,])
+          data=data.frame(data)
 
-    }
-    }
+        }else if (input$cat == "Race") {
+
+          data <- as.matrix(data[data$Category == input$race,])
+          data=data.frame(data)
+      }
+
+      }
     data
   }
   )
   )
 
-  #Render text
+  #Render textdata
 
   list <- c(
     "Measure definitions:",
-  "Prevalence = The measured or estimated percentage of people -- weighted to population characteristics – with an attribute or disease during a specific year.",
-  "Age-adjusted Prevalence = Prevalence standardized to the age distribution of a specific population, usually the U.S. 2000 standard population.",
-"Crude Prevalence = Prevalence standardized to the measured number of deaths, cases of conditions, diseases or hospitalizations during a specific year – incidence and mortality rates are per 100,000 persons; hospitalization rates are per 1,000 persons."
+    "Prevalence = The measured or estimated percentage of people -- weighted to population characteristics – with an attribute or disease during a specific year.",
+    "Age-adjusted Prevalence = Prevalence standardized to the age distribution of a specific population, usually the U.S. 2000 standard population.",
+    "Crude Prevalence = Prevalence standardized to the measured number of deaths, cases of conditions, diseases or hospitalizations during a specific year – incidence and mortality rates are per 100,000 persons; hospitalization rates are per 1,000 persons."
   )
 
   text.data <- as.data.frame(list)
@@ -236,8 +244,10 @@ server=function(input, output) {
 
   })
 
+  options(shiny.sanitize.errors = FALSE)
 
-
- }
+}
 
 shinyApp(ui=ui, server=server)
+
+

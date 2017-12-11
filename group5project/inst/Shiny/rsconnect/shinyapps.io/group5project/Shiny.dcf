@@ -10,3 +10,5 @@ url: https://group5project.shinyapps.io/Shiny/
 when: 1512873935.32549
 asMultiple: FALSE
 asStatic: FALSE
+sanitize_errors: FALSE
+preserve_logs: TRUE
